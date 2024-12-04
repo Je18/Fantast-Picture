@@ -72,8 +72,8 @@ public class Controller {
 
     private void updateNote() {
         try {
-            Images selectedImage = model.getImageByName(imgSelected);
-            Person selectedPerson = model.getPersonByName(nameInput.getText().trim());
+            Images selectedImage = model.getImageName(imgSelected);
+            Person selectedPerson = model.getPersonName(nameInput.getText().trim());
 
             if (selectedImage != null && selectedPerson != null) {
                 Notes note = model.getNoteForImgPerson(selectedImage, selectedPerson);
@@ -94,10 +94,9 @@ public class Controller {
 
     public void verifyIdentity() {
         try {
-        	System.out.println("D");
-            Person authenticatedPerson = model.getIdentity(nameInput.getText(), pwdInput.getText());
-            if (authenticatedPerson != null) {
-                errorLbl.setText("Bienvenue " + authenticatedPerson.getName() + " !");
+            Person authenPerson = model.getIdentity(nameInput.getText(), pwdInput.getText());
+            if (authenPerson != null) {
+                errorLbl.setText("Bienvenue " + authenPerson.getName() + " !");
                 noteBtn.setDisable(false);
                 noteInput.setDisable(false);
 
@@ -138,24 +137,24 @@ public class Controller {
             try {
                 float noteValue = Float.parseFloat(noteInput.getText());
                 if (noteValue < 0 || noteValue > 20) {
-                    errorLbl.setText("La note doit être comprise entre 0 et 20.");
+                    errorLbl.setText("La note doit être entre 0 et 20");
                     return;
                 }
 
-                Images image = model.getImageByName(imgSelected);
-                Person person = model.getPersonByName(nameInput.getText());
+                Images image = model.getImageName(imgSelected);
+                Person person = model.getPersonName(nameInput.getText());
 
                 if (image != null && person != null) {
                     model.createNote(image, person, noteValue);
                     errorLbl.setText("Note ajoutée pour " + imgSelected);
                 } else {
-                    errorLbl.setText("Erreur lors de l'ajout de la note.");
+                    errorLbl.setText("Ajout de la note impossible");
                 }
             } catch (NumberFormatException e) {
-                errorLbl.setText("Veuillez entrer une note valide.");
+                errorLbl.setText("La note doit etre entre 0 et 20");
             }
         } else {
-            errorLbl.setText("Sélectionnez une image dans la liste.");
+            errorLbl.setText("Une image doit être sélectionnée");
         }
     }
 }

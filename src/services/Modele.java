@@ -149,7 +149,7 @@ public class Modele {
 	    return notesList;
 	}
 	
-	public Images getImageByName(String name) {
+	public Images getImageName(String name) {
 	    for (Images img : getListImage()) {
 	        if (img.getName().equals(name)) {
 	            return img;
@@ -158,7 +158,7 @@ public class Modele {
 	    return null;
 	}
 
-	public Person getPersonByName(String name) {
+	public Person getPersonName(String name) {
 	    for (Person person : getListPerson()) {
 	        if (person.getName().equals(name)) {
 	            return person;
