@@ -15,9 +15,9 @@ public class Main extends Application {
 			Parent rootFXML = FXMLLoader.load(getClass().getResource("vue.fxml"));
 			BorderPane root = new BorderPane();
 			Scene scene = new Scene(rootFXML);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Tips");
+			primaryStage.setTitle("Fantast'Picture");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
